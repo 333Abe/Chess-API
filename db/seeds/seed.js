@@ -23,19 +23,16 @@ const seed = async (data) => {
         en_passant VARCHAR(2)
       );`);
 
-  const insertGamesQueryStr = format(
-    "INSERT INTO games (board_position, turn, castling, en_passant) VALUES %L RETURNING *;",
-    games.map(({ board_position, turn, castling, en_passant }) => [
-      board_position,
-      turn,
-      castling,
-      en_passant,
-    ])
-  );
-
-  return db.query(insertGamesQueryStr).then((result) => {
-    return result.rows;
+  const promises = games.map((game) => {
+    const { board_position, turn, castling, en_passant } = game;
+    return db.query(
+      "INSERT INTO games (board_position, turn, castling, en_passant) VALUES ($1, $2, $3, $4) RETURNING *;",
+      [board_position, turn, castling, en_passant]
+    );
   });
+
+  const results = await Promise.all(promises);
+  return results.flat().map((result) => result.rows);
 };
 
 module.exports = seed;
