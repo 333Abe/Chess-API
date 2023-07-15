@@ -1,10 +1,11 @@
 const db = require("../connection");
+const format = require("pg-format");
 
 const seed = async (data) => {
   const { games } = data;
   await db.query(`DROP TABLE IF EXISTS games;`);
 
-  const gamesTablePromise = db.query(`CREATE TABLE games (
+  await db.query(`CREATE TABLE games (
         game_id SERIAL PRIMARY KEY,
         board_position TEXT[][] DEFAULT 
         '{
@@ -21,6 +22,20 @@ const seed = async (data) => {
         castling VARCHAR(4) CHECK (castling ~* '^[KQkq]{0,4}$') DEFAULT 'KQkq',
         en_passant VARCHAR(2)
       );`);
+
+  const insertGamesQueryStr = format(
+    "INSERT INTO games (board_position, turn, castling, en_passant) VALUES %L RETURNING *;",
+    games.map(({ board_position, turn, castling, en_passant }) => [
+      board_position,
+      turn,
+      castling,
+      en_passant,
+    ])
+  );
+
+  return db.query(insertGamesQueryStr).then((result) => {
+    return result.rows;
+  });
 };
 
 module.exports = seed;
