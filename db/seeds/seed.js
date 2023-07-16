@@ -1,5 +1,4 @@
 const db = require("../connection");
-const format = require("pg-format");
 
 const seed = async (data) => {
   const { games } = data;

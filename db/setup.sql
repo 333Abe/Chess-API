@@ -1,3 +1,5 @@
 DROP DATABASE IF EXISTS chess_db;
+DROP DATABASE IF EXISTS chess_db_test;
 
 CREATE DATABASE chess_db;
+CREATE DATABASE chess_db_test;
