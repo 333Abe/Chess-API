@@ -9,14 +9,30 @@ afterAll(() => db.end());
 
 beforeEach(() => seed(testData));
 
-describe("hello world test", () => {
-  it("should return Hello World!", () => {
+describe("GET /api/games/:game_id", () => {
+  it("should return an object containing info a on specific game", () => {
+    const expectedGameInfo = {
+      game_id: 1,
+      board_position: [
+        ["r", "n", "b", "q", "k", "b", "n", "r"],
+        ["p", "p", "p", "p", "p", "p", "p", "p"],
+        [null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null],
+        ["P", "P", "P", "P", "P", "P", "P", "P"],
+        ["R", "N", "B", "Q", "K", "B", "N", "R"],
+      ],
+      turn: "white",
+      castling: "KQkq",
+      en_passant: null,
+    };
+
     return request(app)
-      .get("/")
+      .get("/api/games/1")
       .expect(200)
-      .then((res) => {
-        console.log(Object.keys(res), "<<<<<<<<<<<<<< response");
-        expect(res.text).toBe("Hello World!");
+      .then(({ body: { gameInfo } }) => {
+        expect(gameInfo).toEqual(expectedGameInfo);
       });
   });
 });
