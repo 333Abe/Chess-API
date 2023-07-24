@@ -35,4 +35,20 @@ describe("GET /api/games/:game_id", () => {
         expect(gameInfo).toEqual(expectedGameInfo);
       });
   });
+  it("404: when supplied game_id is valid but doesnt exist", () => {
+    return request(app)
+      .get("/api/games/99999")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Not found");
+      });
+  });
+  it('400: when supplied game_id is invalid', () => {
+    return request(app)
+    .get("/api/games/invalid")
+    .expect(400)
+    .then(({ body }) => {
+      expect(body.msg).toBe("Bad request");
+    });
+  });
 });
