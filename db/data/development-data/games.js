@@ -1,14 +1,14 @@
 module.exports = [
   {
     board_position: [
-      ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
-      ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
-      ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-      ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+      ["R", "P", null, null, null, null, "p", "r"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["Q", "P", null, null, null, null, "p", "q"],
+      ["K", "P", null, null, null, null, "p", "k"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["R", "P", null, null, null, null, "p", "r"]
     ],
     turn: 'white',
     castling: 'KQkq',
@@ -16,14 +16,14 @@ module.exports = [
   },
   {
     board_position: [
-      ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
-      ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, 'P', null, null, null],
-      [null, null, null, null, null, null, null, null],
-      ['P', 'P', 'P', 'P', null, 'P', 'P', 'P'],
-      ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+      ["R", "P", null, null, null, null, "p", "r"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["Q", "P", null, null, null, null, "p", "q"],
+      ["K", null, null, "P", null, null, "p", "k"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["R", "P", null, null, null, null, "p", "r"]
     ],
     turn: 'black',
     castling: 'KQkq',
@@ -31,14 +31,14 @@ module.exports = [
   },
   {
     board_position: [
-      ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
-      ['p', 'p', 'p', 'p', 'p', null, 'p', 'p'],
-      [null, null, null, null, null, null, null, null],
-      [null, null, null, null, 'p', null, null, null],
-      [null, null, null, null, 'P', null, null, null],
-      [null, null, null, null, null, null, null, null],
-      ['P', 'P', 'P', 'P', null, 'P', 'P', 'P'],
-      ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+      ["R", "P", null, null, null, null, "p", "r"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["Q", "P", null, null, null, null, "p", "q"],
+      ["K", null, null, "P", "p", null, null, "k"],
+      ["B", "P", null, null, null, null, "p", "b"],
+      ["N", "P", null, null, null, null, "p", "n"],
+      ["R", "P", null, null, null, null, "p", "r"]
     ],
     turn: 'white',
     castling: 'KQkq',
